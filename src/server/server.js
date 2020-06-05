@@ -29,7 +29,16 @@ app.listen(8080, function () {
 
 // Check whether routes are working in general
 app.get('/test', (req, res) => {
-    res.send('Test route is working');
+    res.send(process.env.api);
 });
 
-
+// The POST request for Geonames API
+app.post('/api', (req, res) => {  
+      req.body, // json file is received as {"text": "Your text"} -> testing via postman
+      function(error, response) {
+        if (error === null) {
+          res.send(response); // response is the output data of the API 
+          console.log(response); // Display the response on the server
+        } else console.log('API is not working');
+      };
+  });
