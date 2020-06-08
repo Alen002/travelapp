@@ -1,11 +1,10 @@
 /*** Global Variables ***/
 // Geonames.org variables
-const apiURL = 'http://api.geonames.org/'
-const api = process.env.APIGEONAMES;
+const apiGeonamesURL = 'http://api.geonames.org/'
+const apiGeonamesUser = process.env.APIGEONAMES;
+const apiGeonamesPath = `${apiGeonamesURL}postalCodeSearchJSON?placename=raleigh&username=${apiGeonamesUser}`;
 
-const apiPath = `http://api.geonames.org/postalCodeSearchJSON?placename=raleigh&username=${api}`;
-
-// Post fetch results to the server
+// Fetch results from the APIs are posted to the server
 function handleSubmit(event) {
     event.preventDefault()
     // check what text was put into the form field
@@ -13,12 +12,10 @@ function handleSubmit(event) {
     // User validation
     if (cityName.length == 0) {alert('Please enter a city');} 
 
-    console.log(geonames(apiPath));
+    console.log(geonames(apiGeonamesPath));
 
     console.log('The following city was entered:', cityName);
     console.log("::: City has been submitted :::");
-    
-
 };
 
 
