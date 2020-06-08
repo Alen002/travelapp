@@ -1,6 +1,5 @@
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 dotenv.config();
-
 var path = require('path')
 const express = require('express')
 const morgan = require('morgan');
@@ -27,18 +26,19 @@ app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
   })
 
+// Data is saved in the array named inputData
+const inputData = [];
+
+// **** START OF ROUTES ****
+
 // Check whether routes are working in general
 app.get('/test', (req, res) => {
-    res.send(process.env.api);
+    /* res.send(process.env.api); */
+    res.send(inputData);
 });
 
-// The POST request for Geonames API
+// POST request for saving received client data into array named inputData
 app.post('/api', (req, res) => {  
-      req.body, // json file is received as {"text": "Your text"} -> testing via postman
-      function(error, response) {
-        if (error === null) {
-          res.send(response); // response is the output data of the API 
-          console.log(response); // Display the response on the server
-        } else console.log('API is not working');
-      };
-  });
+   inputData.push(req.body.text); //req.body.text
+   res.send(inputData);
+  })
