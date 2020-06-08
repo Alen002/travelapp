@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script type="text/javascript" scr="../../../dist/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script type="text/javascript" scr="../../../dist/main.js"></script>
 </head>
 <body>
 
   <form class="" onsubmit="return handleSubmit(event)">
-    <input id="city-name" type="text" name="input" value="" placeholder="Name"> 
-    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)"   onsubmit="return Client.handleSubmit(event)">
-Output
-  <div id="geoname"></div>
+  <input id="city-name" type="text" name="input" value="" placeholder="Name"> 
+  <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+  
+  <div>Output Geodata:</div>
+  <div id="geo-longitude"></div>
+  <div id="geo-latitude"></div>
+  <div id="geo-country"></div>
 
 
 
