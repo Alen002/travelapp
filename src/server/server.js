@@ -26,8 +26,8 @@ app.listen(8080, function () {
     console.log('Example app listening on port 8080!')
   })
 
-// API fetch data received from the client is saved in an array named inputData
-const inputData = [];
+// API fetch data received from the client is saved in an array named saved Data
+const savedData = [];
 
 // **** START OF ROUTES ****
 
@@ -38,7 +38,15 @@ app.get('/test', (req, res) => {
 });
 
 // POST request for saving received client data into array named inputData
-app.post('/save', (req, res) => {  
-   inputData.push(req.body.text); //req.body.text
-   res.send(inputData);
-  })
+app.post('/save', (req, res) => { 
+    if (req.body != 0) {
+        const result = req.body.result;
+        savedData.push(result);
+        res.send('Your trip has been saved')
+    } else {
+        console.log('Could not save data');
+        res.send('Something went wrong. Could not save the data...');
+    }
+    
+  });
+

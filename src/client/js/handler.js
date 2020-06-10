@@ -1,12 +1,12 @@
-/**** Global Variables ****/
-
 import { save } from "./save";
+import { post } from "./post";
 
-// Geonames.org variables
+/**** Global Variables ****/
 const apiGeonamesURL = 'http://api.geonames.org/';
 const apiGeonamesUser = process.env.APIGEONAMES;
 const apiWeatherbitURL = 'https://api.weatherbit.io/v2.0/forecast/daily?';
 const apiWeatherbitUser = process.env.APIWEATHERBIT;
+const postPath = 'http://localhost:8080/save';
 
 // **** Fetch results from the APIs are posted to the server ****
 function handleSubmit(event) {
@@ -33,12 +33,11 @@ function handleSubmit(event) {
 
         userData.latitude = data.postalCodes[0].lat;
         userData.longitude = data.postalCodes[0].lng;
-
         console.log('It worked', userData.latitude);
         
         return data; 
     })
-    // latitude and longitude are used in the second fetch after first one settled
+    // latitude and longitude are used in the second fetch after first one is settled
     .then(data => {
         const apiWeatherbitPath = `${apiWeatherbitURL}&lat=${userData.latitude}&lon=${userData.longitude}&key=${apiWeatherbitUser}`;
         processData(apiWeatherbitPath)
@@ -47,8 +46,11 @@ function handleSubmit(event) {
             document.getElementById('weather-longitude').innerHTML= data.lon;
             document.getElementById('weather-latitude').innerHTML= data.lat;
             console.log("Weatherbit", userData.latitude);
+            // Fetch results are send to the server
+            post(postPath, userData);
         });
     });
+    
 
     
 
