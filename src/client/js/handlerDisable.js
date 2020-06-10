@@ -14,46 +14,48 @@ function handleSubmit(event) {
     let cityName = document.getElementById('city-name').value
     // Input validation
     if (cityName.length == 0) {alert('Please enter a city');} 
+
     
-    const apiGeonamesPath = `${apiGeonamesURL}postalCodeSearchJSON?placename=${cityName}&username=${apiGeonamesUser}`;
-    
-    /* const testing = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=47.558395&lon=7.573271&key=${apiWeatherbitUser}`; */
-    /* lat=38.123&lon=-78.543 */
-   
-    // data is stored in the object
     let userData = {}; 
     
-    // Fetching data from geonames, weatherbit and pixabay
-    processData(apiGeonamesPath)
+    // Fetch data from geonames.org
+    const apiGeonamesPath = `${apiGeonamesURL}postalCodeSearchJSON?placename=${cityName}&username=${apiGeonamesUser}`;
+    
+    geonames(apiGeonamesPath)
     .then(data => {
         console.log('Output on geonames: ',data.postalCodes[0]);
         document.getElementById('geo-longitude').innerHTML= data.postalCodes[0].lat;
         document.getElementById('geo-latitude').innerHTML= data.postalCodes[0].lng;
         document.getElementById('geo-country').innerHTML= data.postalCodes[0].countryCode;
-
+        
         userData.latitude = data.postalCodes[0].lat;
         userData.longitude = data.postalCodes[0].lng;
-
-        console.log('It worked', userData.latitude);
         
-        return data; 
-    })
-    // latitude and longitude are used in the second fetch after first one settled
-    .then(data => {
-        const apiWeatherbitPath = `${apiWeatherbitURL}&lat=${userData.latitude}&lon=${userData.longitude}&key=${apiWeatherbitUser}`;
-        processData(apiWeatherbitPath)
-        .then(data => {
-            console.log('Output on weatherbit: ',data);
-            document.getElementById('weather-longitude').innerHTML= data.lon;
-            document.getElementById('weather-latitude').innerHTML= data.lat;
-            console.log("Weatherbit", userData.latitude);
-        });
+        console.log('It worked', userData.latitude);
     });
+    
+    // Fetch data from weatherbit.io
+    const apiWeatherbitPath = `${apiWeatherbitURL}&lat=${userData.latitude}&lon=${userData.longitude}&key=${apiWeatherbitUser}`;
+    /* const testing = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=47.558395&lon=7.573271&key=${apiWeatherbitUser}`; */
+
+    /* lat=38.123&lon=-78.543 */
+    weatherbit(apiWeatherbitPath)
+    .then(data => {
+        console.log('Output on weatherbit: ',data);
+        document.getElementById('weather-longitude').innerHTML= data.lon;
+        document.getElementById('weather-latitude').innerHTML= data.lat;
+        console.log("Weatherbit", userData.latitude);
+    });
+
+
 
     
 
+
+
+
     // Fetch data from pixabay
-  /*   save(); */
+    save();
     // Process finished
     console.log('The following city was entered:', cityName);
     console.log("::: City has been submitted :::");
@@ -73,6 +75,30 @@ const processData = async (url) => {
 
 
 
+// **** Fetch geonames.org ****
+const geonames = async (url) => {
+    try {
+        const response = await fetch(url);
+        const cityData = await response.json();
+        return cityData;
+    } 
+        catch (error) {
+        console.log(error);
+    }
+};
+
+// **** Fetch Weatherbit.io ****
+const weatherbit = async (url) => {
+    try {
+        const response = await fetch(url);
+        const weatherData = await response.json();
+        console.log('weatherData: ',weatherData);
+        return weatherData;
+    }
+        catch (error) {
+            console.log(error);
+        }
+};
 
 export { handleSubmit };
 

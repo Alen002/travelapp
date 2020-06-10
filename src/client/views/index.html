@@ -9,13 +9,22 @@
 <body>
 
   <form class="" onsubmit="return handleSubmit(event)">
-  <input id="city-name" type="text" name="input" value="" placeholder="Name"> 
-  <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+  <p><input id="city-name" type="text" name="input" value="" placeholder="Name"></form></p> 
+  <p><input id="city-date" type="date" name="date" placeholder="Date"></p>
+  <!-- Submit button to fetch data from APIs -->
+  <input type="submit" name="" value="Save Trip" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+  <!-- Save button to post data to server-->
+  <input type="submit" name="" value="test" onclick="return Client.save(event)" onsubmit="return Client.save(event)">
   
   <div>Output Geodata:</div>
   <div id="geo-longitude"></div>
   <div id="geo-latitude"></div>
   <div id="geo-country"></div>
+  
+  <div>Output Weatherdata:</div>
+  <div id="weather-longitude"></div>
+  <div id="weather-latitude"></div>
+  <div id="weather-country"></div>
 
 
 
