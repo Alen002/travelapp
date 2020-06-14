@@ -1,21 +1,21 @@
+var path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
-var path = require('path')
 const express = require('express')
 const morgan = require('morgan');
-const bodyParser = require('body-parser');
-const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
 
-app.use(morgan('short'));  // short or combines can be used as attributes
+app.use(morgan('short')); 
 app.use(express.static('dist'));
 
-// middleware - body-parser
-app.use(bodyParser.urlencoded({extended: false})); 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(bodyParser.json());
+
+const cors = require('cors');
+app.use(cors());
 
 console.log(__dirname)
 app.get('/', (req, res) => {
@@ -34,13 +34,13 @@ const savedData = [];
 // Check whether routes are working in general
 app.get('/test', (req, res) => {
     /* res.send(process.env.api); */
-    res.send(inputData);
+    res.send(savedData);
 });
 
 // POST request for saving received client data into array named inputData
 app.post('/save', (req, res) => { 
     if (req.body != 0) {
-        const result = req.body.result;
+        const result = req.body;
         savedData.push(result);
         res.send('Your trip has been saved')
     } else {

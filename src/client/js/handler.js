@@ -47,20 +47,19 @@ function handleSubmit(event) {
             document.getElementById('weather-latitude').innerHTML= data.lat;
             console.log("Weatherbit", userData.latitude);
             // Fetch results are send to the server
-            post(postPath, userData);
+            
         });
+    })
+    .then(data => {
+        post(postPath);
     });
-    
 
-    
 
-    // Fetch data from pixabay
-  /*   save(); */
-    // Process finished
     console.log('The following city was entered:', cityName);
     console.log("::: City has been submitted :::");
 };
 
+// General function used for the fetch requests
 const processData = async (url) => {
     try {
         const response = await fetch(url);
@@ -71,10 +70,6 @@ const processData = async (url) => {
         console.log(error);
     }
 };
-
-
-
-
 
 export { handleSubmit };
 

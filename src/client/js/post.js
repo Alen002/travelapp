@@ -1,21 +1,21 @@
-// Send fetch results to the server
-const post = async (url, data) => {
-    const res = await fetch(url, {
-    method: "POST",
-    mode: "cors",
-    cache: "no-cache",
-    credentials: "same-origin",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({data})
-    });
+
+  const post = async (url) => {
+    //console.log(JSON.stringify(geodata));
+    const response = await fetch(url, {
+      method: "POST",
+      mode: "cors",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({a: 5})
+    })
     try {
-        const data = await res.json();
-        return data;
-      }catch(error) {
-      console.log("Server message: Something went wrong", error);
-      }
+      const newData = await response.json();
+      return newData;
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
-export { post }
+  export { post };
