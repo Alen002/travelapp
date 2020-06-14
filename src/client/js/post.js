@@ -1,5 +1,5 @@
 
-  const post = async (url) => {
+  const post = async (url, data) => {
     //console.log(JSON.stringify(geodata));
     const response = await fetch(url, {
       method: "POST",
@@ -8,7 +8,7 @@
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({a: 5})
+      body: JSON.stringify(data)
     })
     try {
       const newData = await response.json();

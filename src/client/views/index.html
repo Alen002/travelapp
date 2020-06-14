@@ -13,8 +13,9 @@
   <p><input id="city-date" type="date" name="date" placeholder="Date"></p>
   <!-- Submit button to fetch data from APIs -->
   <input type="submit" name="" value="Save Trip" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
-  <!-- Save button to post data to server-->
-  <input type="submit" name="" value="test" onclick="return Client.save(event)" onsubmit="return Client.save(event)">
+  <!-- Remove button to remove data from server -->
+  <input type="button" name="" value="Remove Trip" onclick="return Client.remove(event)" onsubmit="return Client.remove(event)">
+  
   
   <div>Output Geodata:</div>
   <div id="geo-longitude"></div>

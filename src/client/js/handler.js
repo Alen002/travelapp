@@ -1,4 +1,3 @@
-import { save } from "./save";
 import { post } from "./post";
 
 /**** Global Variables ****/
@@ -16,11 +15,7 @@ function handleSubmit(event) {
     if (cityName.length == 0) {alert('Please enter a city');} 
     
     const apiGeonamesPath = `${apiGeonamesURL}postalCodeSearchJSON?placename=${cityName}&username=${apiGeonamesUser}`;
-    
-    /* const testing = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=47.558395&lon=7.573271&key=${apiWeatherbitUser}`; */
-    /* lat=38.123&lon=-78.543 */
-   
-    // data is stored in the object
+  
     let userData = {}; 
     
     // Fetching data from geonames, weatherbit and pixabay
@@ -51,7 +46,7 @@ function handleSubmit(event) {
         });
     })
     .then(data => {
-        post(postPath);
+        post(postPath, userData);
     });
 
 

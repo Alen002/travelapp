@@ -1,5 +1,5 @@
 import { handleSubmit } from './js/handler.js'; 
-import { save } from './js/save.js'; 
+import { remove } from './js/remove.js'; 
 import { test } from './js/script.js'; 
 import { post } from './js/post.js'; 
 
@@ -10,5 +10,5 @@ import html from './views/index.html';
 // export for usage of function in index.html
 export { handleSubmit };  
 export { test };
-export { save };
+export { remove };
 export { post }

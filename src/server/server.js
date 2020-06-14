@@ -41,12 +41,19 @@ app.get('/test', (req, res) => {
 app.post('/save', (req, res) => { 
     if (req.body != 0) {
         const result = req.body;
-        savedData.push(result);
+        savedData[0] = result;
         res.send('Your trip has been saved')
     } else {
         console.log('Could not save data');
         res.send('Something went wrong. Could not save the data...');
-    }
-    
-  });
+    } 
+});
 
+// Remove data from inputData array
+app.post('/remove', (req, res) => {
+        // Delete element in savedData array
+        savedData.shift();
+        res.send('Your trip has been saved')
+    
+    console.log('Data entry has been removed')
+});
