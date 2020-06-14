@@ -1,4 +1,5 @@
 import { post } from "./post";
+import { data, date } from "./date";
 
 /**** Global Variables ****/
 const apiGeonamesURL = 'http://api.geonames.org/';
@@ -45,11 +46,15 @@ function handleSubmit(event) {
             
         });
     })
+    // Fetch data from the Pixabay API
+    .then(data => {
+
+    })
     .then(data => {
         post(postPath, userData);
     });
 
-
+    date();
     console.log('The following city was entered:', cityName);
     console.log("::: City has been submitted :::");
 };
