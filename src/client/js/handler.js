@@ -16,7 +16,7 @@ function handleSubmit(event) {
     if (cityName.length == 0) {alert('Please enter a city');} 
     
     const apiGeonamesPath = `${apiGeonamesURL}postalCodeSearchJSON?placename=${cityName}&username=${apiGeonamesUser}`;
-  
+    // All the relevant data is saved in the object
     let userData = {}; 
     
     // Fetching data from geonames, weatherbit and pixabay
@@ -26,23 +26,39 @@ function handleSubmit(event) {
         document.getElementById('geo-longitude').innerHTML= data.postalCodes[0].lat;
         document.getElementById('geo-latitude').innerHTML= data.postalCodes[0].lng;
         document.getElementById('geo-country').innerHTML= data.postalCodes[0].countryCode;
-
+        // geonames data is saved in the userData object
         userData.latitude = data.postalCodes[0].lat;
         userData.longitude = data.postalCodes[0].lng;
-        console.log('It worked', userData.latitude);
-        
+        userData.country = data.postalCodes[0].countryCode;
+        userData.city = cityName;
+
         return data; 
     })
-    // latitude and longitude are used in the second fetch after first one is settled
+    // lat and lon from geonames are used for the weatherbit API after previous fetch has been settled
     .then(data => {
         const apiWeatherbitPath = `${apiWeatherbitURL}&lat=${userData.latitude}&lon=${userData.longitude}&key=${apiWeatherbitUser}`;
         processData(apiWeatherbitPath)
         .then(data => {
+            // if date() <8 then select current weather, choose latest weather forecast if trip in the next week(s)
+            let dateResult = date();
+
+            let chooseWeather = 0
+            if (dateResult < 8) {
+                chooseWeather = 0;
+            } else {
+                chooseWeather = 15;
+            };
             console.log('Output on weatherbit: ',data);
             document.getElementById('weather-longitude').innerHTML= data.lon;
             document.getElementById('weather-latitude').innerHTML= data.lat;
+            document.getElementById('weather-description').innerHTML= data.data[chooseWeather].weather.description;
+            document.getElementById('weather-low-temp').innerHTML= data.data[chooseWeather].low_temp;
+            document.getElementById('weather-max-temp').innerHTML= data.data[chooseWeather].max_temp;
+            
+            // weatherbit data is saved in the userData object
+
             console.log("Weatherbit", userData.latitude);
-            // Fetch results are send to the server
+            
             
         });
     })
@@ -50,11 +66,11 @@ function handleSubmit(event) {
     .then(data => {
 
     })
+    // Post data to the server
     .then(data => {
         post(postPath, userData);
     });
 
-    date();
     console.log('The following city was entered:', cityName);
     console.log("::: City has been submitted :::");
 };
