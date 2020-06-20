@@ -10,17 +10,23 @@ function date(date) {
     /* let year = dateArray.splice(0,4); */
     let actualYear  = dateArray.slice(0, 4).map((x) =>parseInt(x)).join('');
     let actualDay  = dateArray.slice(8, 10).map((x) =>parseInt(x)).join('');
-    let actualMonth  = dateArray.slice(6).map((y) =>parseInt(y)).join('');
- 
+    /* convert for instance 06 into 6 */
+    let actualMonth = dateArray.slice(5,7)
+    if (actualMonth[0] == 0) {
+        actualMonth = actualMonth[1];
+    } else {
+        actualMonth = actualMonth.map((y) =>parseInt(y)).join('');
+    };
+
     console.log('year schedule: ', actualYear);
     console.log('day schedule: ', actualDay);
     console.log('month schedule: ', actualMonth);
 
-    const travelDate = new Date(actualYear, 7, 15); // Format issues
+    const travelDate = new Date(actualYear, actualMonth, actualDay); // Format issues
     const actualDate = new Date(currentTime.getFullYear(),currentTime.getMonth() + 1, currentTime.getDate());
 
     const diffDays = Math.round(Math.abs((travelDate - actualDate) / oneDay));
-    console.log(diffDays);
+    console.log('Days diff actual s. planned: ',diffDays);
     return diffDays;
 };
 
