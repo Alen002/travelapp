@@ -7,10 +7,9 @@ function date(date) {
     const oneDay = 24 * 60 * 60 * 1000; 
     let dateArray = date.split('');
     console.log(dateArray);
-    /* let year = dateArray.splice(0,4); */
     let actualYear  = dateArray.slice(0, 4).map((x) =>parseInt(x)).join('');
     let actualDay  = dateArray.slice(8, 10).map((x) =>parseInt(x)).join('');
-    /* convert for instance 06 into 6 */
+    // convert for instance 06 into 6 
     let actualMonth = dateArray.slice(5,7)
     if (actualMonth[0] == 0) {
         actualMonth = actualMonth[1];
@@ -22,7 +21,7 @@ function date(date) {
     console.log('day schedule: ', actualDay);
     console.log('month schedule: ', actualMonth);
 
-    const travelDate = new Date(actualYear, actualMonth, actualDay); // Format issues
+    const travelDate = new Date(actualYear, actualMonth, actualDay); 
     const actualDate = new Date(currentTime.getFullYear(),currentTime.getMonth() + 1, currentTime.getDate());
 
     const diffDays = Math.round(Math.abs((travelDate - actualDate) / oneDay));

@@ -43,15 +43,20 @@ function handleSubmit(event) {
         const apiWeatherbitPath = `${apiWeatherbitURL}&lat=${userData.latitude}&lon=${userData.longitude}&key=${apiWeatherbitUser}`;
         processData(apiWeatherbitPath)
         .then(data => {
-            // if date() <8 then select current weather, choose latest weather forecast if trip in the next week(s)
+            /* Trip within one week then use current weather, array[0]
+               Trip more than one week in future then use the forecast. arrray[7]
+               Trip more than sixteen days in the future then use latest forecast from the API, array[15]  */
             let dateResult = date(inputDate);
-
+            console.log('dateResult: ',dateResult);
             let i = 0
-            if (dateResult < 8) {
+            if (dateResult >= 0 && dateResult <= 7) {
                 i = 0;
-            } else {
+            } if (dateResult > 7 && dateResult < 16) {
+                i = 7;
+            } if (dateResult > 16) {
                 i = 15;
             };
+
             console.log('Output on weatherbit: ',data);
             document.getElementById('weather-longitude').innerHTML= data.lon;
             document.getElementById('weather-latitude').innerHTML= data.lat;
