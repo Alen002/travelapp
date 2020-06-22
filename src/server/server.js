@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express')
 const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
@@ -14,7 +15,6 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(bodyParser.json());
 
-const cors = require('cors');
 app.use(cors());
 
 console.log(__dirname)

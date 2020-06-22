@@ -6,6 +6,7 @@ const apiGeonamesURL = 'http://api.geonames.org/';
 const apiGeonamesUser = process.env.APIGEONAMES;
 const apiWeatherbitURL = 'https://api.weatherbit.io/v2.0/forecast/daily?';
 const apiWeatherbitUser = process.env.APIWEATHERBIT;
+const apiPixabayUser = process.env.APIPIXABAY;
 const postPath = 'http://localhost:8080/save';
 
 
@@ -44,7 +45,7 @@ function handleSubmit(event) {
         processData(apiWeatherbitPath)
         .then(data => {
             /* Trip within one week then use current weather, array[0]
-               Trip more than one week in future then use the forecast. arrray[7]
+               Trip more than one week in future then use the forecast. array[7]
                Trip more than sixteen days in the future then use latest forecast from the API, array[15]  */
             let dateResult = date(inputDate);
             console.log('dateResult: ',dateResult);
@@ -73,7 +74,9 @@ function handleSubmit(event) {
     })
     // Fetch data from the Pixabay API
     .then(data => {
-
+        console.log('PIXABAY is it working');
+        const urlPixabay = `https://pixabay.com/api/?key=${apiPixabayUser}&image_type=photo&category=travel`;
+        console.log(post(urlPixabay, cityName));
     })
     // Post data to the server
     .then(data => {
