@@ -75,7 +75,9 @@ function handleSubmit(event) {
     // Fetch data from the Pixabay API
     .then(data => {
         console.log('PIXABAY is it working');
-        const urlPixabay = `https://pixabay.com/api/?key=${apiPixabayUser}&image_type=photo&category=travel`;
+        const urlPixabay = `https://pixabay.com/api/?key=${apiPixabayUser}&q=${cityName}&image_type=photo`;
+        
+
         console.log(post(urlPixabay, cityName));
     })
     // Post data to the server
