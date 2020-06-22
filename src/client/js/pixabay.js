@@ -13,12 +13,9 @@ function pixabay(urlPixabay){
     .then((data) => {
         console.log(data);
         document.getElementById('pixabay-img').innerHTML = data.hits[0].webformatURL;
-        let img = data.hits[0].webformatURL;
-        return img;
+        return data;
     });
+    
 };
 
-
-
 export { pixabay };
-export { pixabayData };

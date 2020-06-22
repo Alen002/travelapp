@@ -1,5 +1,4 @@
 import { post } from "./post";
-import { pixabayData } from "./pixabay";
 import { pixabay } from "./pixabay";
 import { data, date } from "./date";
 
@@ -25,9 +24,12 @@ function handleSubmit(event) {
     // All the relevant data is saved in the object
     let userData = {}; 
 
-    // fetch data from the API
+    // Fetch data from the pixabay API
     const urlPixabay = `https://pixabay.com/api/?key=${apiPixabayUser}&q=${cityName}&image_type=photo`;
-    userData.img = pixabay(urlPixabay);
+    pixabay(urlPixabay);
+    
+    
+
 
    
     // Fetching data from geonames, weatherbit and pixabay
