@@ -1,4 +1,6 @@
 import { post } from "./post";
+import { pixabayData } from "./pixabay";
+import { pixabay } from "./pixabay";
 import { data, date } from "./date";
 
 /**** Global Variables ****/
@@ -8,7 +10,6 @@ const apiWeatherbitURL = 'https://api.weatherbit.io/v2.0/forecast/daily?';
 const apiWeatherbitUser = process.env.APIWEATHERBIT;
 const apiPixabayUser = process.env.APIPIXABAY;
 const postPath = 'http://localhost:8080/save';
-
 
 function handleSubmit(event) {
     event.preventDefault();
@@ -23,7 +24,12 @@ function handleSubmit(event) {
     const apiGeonamesPath = `${apiGeonamesURL}postalCodeSearchJSON?placename=${cityName}&username=${apiGeonamesUser}`;
     // All the relevant data is saved in the object
     let userData = {}; 
-    
+
+    // fetch data from the API
+    const urlPixabay = `https://pixabay.com/api/?key=${apiPixabayUser}&q=${cityName}&image_type=photo`;
+    userData.img = pixabay(urlPixabay);
+
+   
     // Fetching data from geonames, weatherbit and pixabay
     processData(apiGeonamesPath)
     .then(data => {
@@ -64,27 +70,25 @@ function handleSubmit(event) {
             document.getElementById('weather-description').innerHTML= data.data[i].weather.description;
             document.getElementById('weather-low-temp').innerHTML= data.data[i].low_temp;
             document.getElementById('weather-max-temp').innerHTML= data.data[i].max_temp;
-            
             // weatherbit data is saved in the userData object
-
-            console.log("Weatherbit", userData.latitude);
-            
-            
+            console.log("Weatherbit", userData.latitude);  
         });
     })
     // Fetch data from the Pixabay API
-    .then(data => {
-        console.log('PIXABAY is it working');
+   /*  .then(data => {
         const urlPixabay = `https://pixabay.com/api/?key=${apiPixabayUser}&q=${cityName}&image_type=photo`;
+        console.log('PIXABAY API is working');
         
-
+        data = post(urlPixabay, cityName);
         console.log(post(urlPixabay, cityName));
-    })
+        
+        document.getElementById('pixabay-img').innerHTML = data;
+    }) */ 
+    
     // Post data to the server
     .then(data => {
         post(postPath, userData);
     });
-
     console.log('The following city was entered:', cityName);
     console.log("::: City has been submitted :::");
 };

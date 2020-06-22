@@ -3,6 +3,8 @@ import { remove } from './js/remove.js';
 import { test } from './js/script.js'; 
 import { post } from './js/post.js'; 
 import { date } from './js/date.js'; 
+import { pixabayData } from './js/pixabay.js'; 
+import { pixabay } from './js/pixabay.js'; 
 
 import './styles/index.scss';
 import img from './media/test.png';
@@ -14,3 +16,5 @@ export { test };
 export { remove };
 export { post };
 export { date };
+export { pixabayData };
+export { pixabay };
