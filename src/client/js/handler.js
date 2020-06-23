@@ -72,16 +72,14 @@ function handleSubmit(event) {
             document.getElementById('weather-low-temp').innerHTML= `Low: ${data.data[i].low_temp}` + "<span>&#176;</span>";
             
             // weatherbit data is saved in the userData object
-            console.log("Weatherbit", userData.latitude);  
+            console.log("Weatherbit", userData.latitude);   
         });
+
     })
-    // Post data to the server
+    // Post userData object to server.js
     .then(data => {
         post(postPath, userData);
     });
-    console.log('The following city was entered:', cityName);
-    console.log("::: City has been submitted :::");
 };
 
 export { handleSubmit };
-

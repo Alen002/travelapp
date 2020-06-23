@@ -1,4 +1,4 @@
-// Function is sending data to the server.js
+// Function for sending data to the server.js
 const post = async ( url = '', data = {})=>{
   const response = await fetch(url, {
   method: 'POST', 
