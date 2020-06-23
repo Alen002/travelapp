@@ -2,6 +2,7 @@ import { post } from "./post";
 import { pixabay } from "./pixabay";
 import { data, date } from "./date";
 import { processData } from "./processData";
+import { forecast } from "./forecast";
 
 /**** Global Variables ****/
 const apiGeonamesURL = 'http://api.geonames.org/';
@@ -53,15 +54,7 @@ function handleSubmit(event) {
                Trip more than one week in future, then use the forecast, data[7]
                Trip more than sixteen days in the future, then use latest forecast from the API, data[15]  */
             let dateResult = date(inputDate);
-            console.log('dateResult: ', dateResult);
-            let i = 0;
-            if (dateResult >= 0 && dateResult <= 7) {
-                i = 0;
-            } if (dateResult > 7 && dateResult < 16) {
-                i = 7;
-            } if (dateResult > 16) {
-                i = 15;
-            };
+            let i = forecast(dateResult);
            
             userData.days = dateResult;
             console.log('Output on weatherbit: ',data);

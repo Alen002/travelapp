@@ -5,6 +5,7 @@ import { post } from './js/post.js';
 import { date } from './js/date.js'; 
 import { pixabay } from './js/pixabay.js'; 
 import { processData } from './js/processData.js'; 
+import { forecast } from './js/forecast.js'; 
 
 import './styles/index.scss';
 import img from './media/test.png';
@@ -18,3 +19,4 @@ export { post };
 export { date };
 export { pixabay };
 export { processData };
+export { forecast };
