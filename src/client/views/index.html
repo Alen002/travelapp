@@ -5,8 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script type="text/javascript" scr="../../../dist/main.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
 </head>
 <body>
+
+
+  <img id="travel-image">
 
   <form class="" onsubmit="return handleSubmit(event)">
   <p><input id="city-name" type="text" name="input" value="" placeholder="Name"></form></p> 
@@ -16,6 +20,7 @@
   <!-- Remove button to remove data from server -->
   <input type="button" name="" value="Remove Trip" onclick="return Client.remove(event)" onsubmit="return Client.remove(event)">
   
+  <h2 id="trip-information"></h2>
   
   <div>Output Geodata:</div>
   <div id="geo-longitude"></div>

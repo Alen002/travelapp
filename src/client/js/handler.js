@@ -28,7 +28,7 @@ function handleSubmit(event) {
     const urlPixabay = `https://pixabay.com/api/?key=${apiPixabayUser}&q=${cityName}&image_type=photo`;
     pixabay(urlPixabay);
     
-    
+    document.getElementById('trip-information').innerHTML = `My trip to ${cityName}`;
 
 
    
