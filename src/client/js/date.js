@@ -26,6 +26,10 @@ function date(date) {
 
     const diffDays = Math.round(Math.abs((travelDate - actualDate) / oneDay));
     console.log('Days diff actual s. planned: ',diffDays);
+    const departure = document.getElementById('city-date').value;
+    document.getElementById('info-departure').innerHTML = `Departing: ${departure}`;
+    
+
     return diffDays;
 };
 

@@ -12,7 +12,7 @@ function pixabay(urlPixabay){
     pixabayData(urlPixabay)  
     .then((data) => {
         console.log(data);
-        document.getElementById('pixabay-img').innerHTML = data.hits[0].webformatURL;
+        console.log(data.hits[0].webformatURL);
         document.getElementById('travel-image').src=`${data.hits[0].webformatURL}`;
         return data;
     });
