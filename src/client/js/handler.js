@@ -66,7 +66,7 @@ function handleSubmit(event) {
             console.log('Output on weatherbit: ',data);
             // HTML output
             document.getElementById('info-days').innerHTML = `${cityName}, ${userData.country} is ${userData.days} days away`;
-            document.getElementById('weather-description').innerHTML= `Typical weather for then is ${data.data[i].weather.description}`;
+            document.getElementById('weather-description').innerHTML= `Weather Forecast is ${data.data[i].weather.description}`;
             document.getElementById('weather-max-temp').innerHTML= `High: ${data.data[i].max_temp}`;
             document.getElementById('weather-low-temp').innerHTML= `Low: ${data.data[i].low_temp}`;
             
@@ -74,7 +74,6 @@ function handleSubmit(event) {
             console.log("Weatherbit", userData.latitude);  
         });
     })
-  
     // Post data to the server
     .then(data => {
         post(postPath, userData);
