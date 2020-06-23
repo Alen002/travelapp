@@ -4,6 +4,7 @@ import { test } from './js/script.js';
 import { post } from './js/post.js'; 
 import { date } from './js/date.js'; 
 import { pixabay } from './js/pixabay.js'; 
+import { processData } from './js/processData.js'; 
 
 import './styles/index.scss';
 import img from './media/test.png';
@@ -16,3 +17,4 @@ export { remove };
 export { post };
 export { date };
 export { pixabay };
+export { processData };

@@ -8,8 +8,8 @@ const post = async ( url = '', data = {})=>{
   body: JSON.stringify(data) 
 });
   try {
-    const newData = await response.json();
-    return newData;
+    const data = await response.json();
+    return data;
   }catch(error) {
     console.log("error", error);
   }

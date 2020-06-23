@@ -1,8 +1,8 @@
 const pixabayData = async ( url = '') => {
     const response = await fetch(url);
     try {
-      const newData = await response.json();
-      return newData;
+      const data = await response.json();
+      return data;
     }catch(error) {
     console.log("error", error);
     }
