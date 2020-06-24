@@ -9,7 +9,7 @@
 
 /**** General Properties ****/
 body {
-    color: #1D1D1F;
+    color: #464755 /* #1D1D1F */;
     font-family: sans-serif;
     padding: 1em;
     background-color: #F7F6F4;
@@ -22,29 +22,45 @@ h2, h3, input {
     margin-top: 2%;
 }
 
+.container {
+    /* box-shadow: 0 20px 50px rgba(8, 112, 184, 0.7); */
+    box-shadow: 0 20px 50px #486082;
+    border-radius: 5px;
+    padding-bottom: 20px; 
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
 img {
     border-radius: 5px;
 }
 
 .hoover {
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     background-color: #2D81C5;
     color: white;
     border: none;
-    width: 90px;
+    width: 110px;
 }
 
 .hoover:hover {
     background-color: #39A6FF;
+}
+input:hover {
+    border: solid 1px;
+    border-color: #39A6FF;
 }
 
 input {
     border-radius: 5px;
     border: lightgrey;
     text-align: center;
-    font-size: 15px;
-    padding:5px;
+    font-size: 20px;
+    padding:10px;
 }
 
 .layout {
@@ -54,23 +70,17 @@ input {
 /**** Image ****/
 #image {
     display: inline-block; 
-    overflow: hidden;      
+    overflow: hidden;
+    padding: 5px;      
 }
 
 img:hover {
     transition: transform 1s ease;
     transform:scale(1.5);
 }
+/**** End of Image ***/
 
-#container {
-    position: relative;
-    min-height: 97vh;  
-}
 
-h1 {
-    text-align: center;
-    padding-bottom: 20px;
-}
 
 /**** Footer ****/
 footer {
@@ -84,6 +94,7 @@ footer {
     font-size: 18px;
     word-spacing: 10px;
 }
+/**** End of Footer ****/
 
 /**** Media Queries ****/
 @media(max-width: 749px) {
