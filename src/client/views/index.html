@@ -5,33 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script type="text/javascript" scr="../../../dist/main.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
 
+  <h1>Travel Weather Forecast</h1>
 
-  <img id="travel-image">
-  <p><h2 id="info-trip"></h2></p>
-  <p><h2 id="info-departure"></h2></p>
+  <div class="container">
+    <div id="image">
+      <img id="travel-image">
+    </div>
 
-  <form class="" onsubmit="return handleSubmit(event)">
-  <p><input id="city-name" type="text" name="input" value="" placeholder="Name"></form></p> 
-  <p><input id="city-date" type="date" name="date" placeholder="Date"></p>
-  <!-- Submit button to fetch data from APIs -->
-  <input type="submit" name="" value="Save Trip" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
-  <!-- Remove button to remove data from server -->
-  <input type="button" name="" value="Remove Trip" onclick="return Client.remove(event)" onsubmit="return Client.remove(event)">
-  
-  <h3 id="info-days"></h3>
-  <div id="weather-description"></div>
-  <div id="weather-low-temp"></div>
-  <div id="weather-max-temp"></div>
+    <div id="output">
+      <p><h2 id="info-trip"></h2></p>
+      <p><h2 id="info-departure"></h2></p>
 
-  
+      <form class="" onsubmit="return handleSubmit(event)">
+      <p><input id="city-name" type="text" name="input" value="" placeholder="Enter City"></form></p> 
+      <p><input id="city-date" type="date" name="date" placeholder="Enter Date"></p>
+      
+      <!-- Submit button to fetch data from APIs -->
+      <input type="submit" class="hoover" name="" value="Save Trip" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+      <!-- Remove button to remove data from the server -->
+      <input type="button" class="hoover" name="" value="Remove Trip" onclick="return Client.remove(event)" onsubmit="return Client.remove(event)">
+      
+      <h3 id="info-days" class="layout"></h3>
+
+      <div id="weather-description" class="layout"></div>
+      <div id="weather-low-temp"class="layout"></div>
+      <div id="weather-max-temp"class="layout"></div>
+    </div>
+
+    <footer>
+      Alen Klaric&copy;
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-twitter-square"></i>
+      <i class="fab fa-instagram"></i>              
+    </footer>  
+  </div>
 
 
-
-
-    
   
   <script>
     // Check that service workers are supported
@@ -41,6 +54,6 @@
         navigator.serviceWorker.register('/service-worker.js');
       });
     } else {console.log('Service worker not working');}
-    </script>
+  </script>
 </body>
 </html>

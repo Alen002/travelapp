@@ -1,6 +1,6 @@
 import { post } from "./post";
 import { pixabay } from "./pixabay";
-import { data, date } from "./date";
+import { date } from "./date";
 import { processData } from "./processData";
 import { forecast } from "./forecast";
 
@@ -50,9 +50,6 @@ function handleSubmit(event) {
         const apiWeatherbitPath = `${apiWeatherbitURL}&lat=${userData.latitude}&lon=${userData.longitude}&key=${apiWeatherbitUser}`;
         processData(apiWeatherbitPath)
         .then(data => {
-            /* Trip within one week, then use current weather, data[0]
-               Trip more than one week in future, then use the forecast, data[7]
-               Trip more than sixteen days in the future, then use latest forecast from the API, data[15]  */
             let dateResult = date(inputDate);
             let i = forecast(dateResult);
            
