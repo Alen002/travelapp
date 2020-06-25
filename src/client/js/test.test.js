@@ -1,4 +1,4 @@
-  
+// Performs two tests
 import { handleSubmit} from './handler';
 
 test("Testing the submit function", () => {
@@ -6,7 +6,7 @@ test("Testing the submit function", () => {
 });
 
 describe('HTTP req', () => {
-    it('Perform POST and GET', async () => {
+    it('Testing POST and GET', async () => {
         const data = await expect (Promise.resolve('res'));
         expect(data).toEqual(expect.anything());
     })

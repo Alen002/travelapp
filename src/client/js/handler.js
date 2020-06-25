@@ -4,6 +4,7 @@ import { date } from "./date";
 import { processData } from "./processData";
 import { forecast } from "./forecast";
 
+
 /**** Global Variables ****/
 const apiGeonamesURL = 'http://api.geonames.org/';
 const apiGeonamesUser = process.env.APIGEONAMES;
@@ -24,7 +25,7 @@ function handleSubmit(event) {
     if (inputDate.length == 0) {alert('Please enter your departure date');} 
     
     const apiGeonamesPath = `${apiGeonamesURL}postalCodeSearchJSON?placename=${cityName}&username=${apiGeonamesUser}`;
-    // All the relevant data is saved in the object
+    
     let userData = {}; 
 
     // Fetch data from the pixabay API
@@ -36,7 +37,7 @@ function handleSubmit(event) {
     .then(data => {
         console.log('Output on geonames: ',data.postalCodes[0]);
            
-        document.getElementById('info-trip').innerHTML= `My trip to: ${cityName}, ${data.postalCodes[0].countryCode}`;
+        document.getElementById('info-trip').innerHTML = `My trip to: ${cityName}, ${data.postalCodes[0].countryCode}`;
         // geonames data is saved in the userData object
         userData.latitude = data.postalCodes[0].lat;
         userData.longitude = data.postalCodes[0].lng;
@@ -57,12 +58,9 @@ function handleSubmit(event) {
             console.log('Output on weatherbit: ',data);
             // HTML output
             document.getElementById('info-days').innerHTML = `${cityName}, ${userData.country} is ${userData.days} days away`;
-            document.getElementById('weather-description').innerHTML= `Weather Forecast is ${data.data[i].weather.description}`;
-            document.getElementById('weather-max-temp').innerHTML= `High: ${data.data[i].max_temp}` + "<span>&#176;</span>";
-            document.getElementById('weather-low-temp').innerHTML= `Low: ${data.data[i].low_temp}` + "<span>&#176;</span>";
-            
-            // weatherbit data is saved in the userData object
-            console.log("Weatherbit", userData.latitude);   
+            document.getElementById('weather-description').innerHTML = `Weather Forecast is ${data.data[i].weather.description}`;
+            document.getElementById('weather-max-temp').innerHTML = `High: ${data.data[i].max_temp}` + "<span>&#176;</span>";
+            document.getElementById('weather-low-temp').innerHTML = `Low: ${data.data[i].low_temp}` + "<span>&#176;</span>";
         });
 
     })
