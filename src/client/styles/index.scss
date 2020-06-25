@@ -1,4 +1,4 @@
-// Reset source format
+// Reset Source Formats
 *,
 *::after,
 *::before {
@@ -23,7 +23,6 @@ h2, h3, input {
 }
 
 .container, footer {
-    /* box-shadow: 0 20px 50px rgba(8, 112, 184, 0.7); */
     box-shadow: 0 20px 50px #486082;
     border-radius: 5px;
     padding-bottom: 20px; 
@@ -34,11 +33,7 @@ h1 {
     padding-bottom: 20px;
 }
 
-img {
-    border-radius: 5px;
-}
-
-.hoover {
+.buttons {
     padding: 10px;
     border-radius: 5px;
     background-color: #2D81C5;
@@ -47,7 +42,7 @@ img {
     width: 110px;
 }
 
-.hoover:hover {
+.buttons:hover {
     background-color: #39A6FF;
 }
 input:hover {
@@ -66,8 +61,13 @@ input {
 .layout {
     padding: 6px;
 }
+/**** End of General Properties ****/
 
 /**** Image ****/
+img {
+    border-radius: 5px;
+}
+
 #image {
     display: inline-block; 
     overflow: hidden;
@@ -79,8 +79,6 @@ img:hover {
     transform:scale(1.5);
 }
 /**** End of Image ***/
-
-
 
 /**** Footer ****/
 footer {
@@ -131,3 +129,4 @@ footer {
         text-align: center;
     }
 }
+/**** End of Media Queries ****/
