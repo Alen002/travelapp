@@ -40,7 +40,7 @@ This is a responsive website in which the app displays weather and image locatio
 
 > npm install
 
-##Start the Project:
+## Start the Project:
 
 To start the server:
 
