@@ -83,7 +83,7 @@ img:hover {
 
 
 /**** Footer ****/
-footer {
+/* footer {
     background: white;
     color: black;
     text-align: center;
@@ -93,8 +93,26 @@ footer {
     text-align: center;
     font-size: 18px;
     word-spacing: 10px;
-}
+} */
 /**** End of Footer ****/
+
+footer {
+    background: black;
+    color: var(--color-light);
+    text-align: center;
+    color: white;
+    
+    bottom: 0;
+    width:99%;
+    text-align: center;
+    font-size: 25px;
+    padding: 3px;
+    word-spacing: 10px;
+}
+
+
+
+
 
 /**** Media Queries ****/
 @media(max-width: 749px) {
