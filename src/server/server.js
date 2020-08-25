@@ -4,6 +4,8 @@ dotenv.config();
 const express = require('express')
 const morgan = require('morgan');
 const cors = require('cors');
+const PORT = process.env.PORT || 8080;
+
 
 const app = express();
 app.use(express.json());
@@ -22,7 +24,7 @@ app.get('/', (req, res) => {
     res.sendFile('dist/index.html')
 });
 
-app.listen(8080, function () {
+app.listen(PORT, function () {
     console.log('Example app listening on port 8080!')
   })
 
