@@ -1,122 +1,58 @@
-// Reset Source Formats
-*,
-*::after,
-*::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit; 
-}
+
 
 /**** General Properties ****/
 body {
-    color: #464755 /* #1D1D1F */;
+    color: #000000 /* #1D1D1F */;
     font-family: sans-serif;
-    padding: 1em;
+  
     background-color: #F7F6F4;
     text-size-adjust: auto;
     font-size: 20px;
 }
 
-h2, h3, input {
-    padding: 2px;
-    margin-top: 2%;
-}
-
-.container, footer {
-    box-shadow: 0 20px 50px #486082;
-    border-radius: 5px;
-    padding-bottom: 20px; 
-}
-
-h1 {
-    text-align: center;
-    padding-bottom: 20px;
-}
 
 
+// img-wrapper
+#travel-image {
+	/* max-width: auto;
+    max-height: 550px; */
+    max-height: 550px;
+    width: 100%;
 
-input:hover {
-    border: solid 1px;
-    border-color: #39A6FF;
-}
-
-input {
-    border-radius: 5px;
-    border: lightgrey;
-    text-align: center;
-    font-size: 20px;
-    padding:10px;
-}
-
-.layout {
-    padding: 6px;
-}
-/**** End of General Properties ****/
-
-/**** Image ****/
-img {
-    border-radius: 5px;
-}
-
-#image {
-    display: inline-block; 
+    border-radius: 10px;
+	object-fit: cover;
+	// When cursor not pointing at image then zoom back
+	transition: 0.75s;
+    cursor: zoom-in;
     overflow: hidden;
-    padding: 5px;      
+}  
+
+// When cursor pointing at image then zoom in
+img:hover {
+	transition: transform 0.75s ease;
+    transform:scale(1.025);
+    overflow: hidden;
 }
 
-img:hover {
-    transition: transform 1s ease;
-    transform:scale(1.1);
+.card {
+    overflow: hidden;
+    min-height: 550px;
 }
+
 /**** End of Image ***/
 
 /**** Footer ****/
 footer {
-    background: black;
-    color: var(--color-light);
-    text-align: center;
-    color: white;
-    
+    position: absolute;
     bottom: 0;
-    width:99%;
-    text-align: center;
-    font-size: 25px;
-    padding: 3px;
-    word-spacing: 10px;
+    /* height: 90px; */
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 100px;
 }
+
+
 /**** End of Footer ****/
 
-/**** Media Queries ****/
-@media(max-width: 749px) {
-    h1 {
-        font-size: 40px;
-    }
-    img {      
-        height: auto;
-        width: 100%; 
-        object-fit: cover; /* crops image */
-    }
-    #output {
-        text-align: center;
-    }
-}
-
-@media(min-width: 750px) {
-    h1 {
-        text-align: left;
-    }
-    .container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 10px;
-    }
-    img {      
-        height: auto;
-        width: 100%; 
-        object-fit: cover; /* crops image */
-    }
-    #output {
-        text-align: center;
-    }
-}
-/**** End of Media Queries ****/

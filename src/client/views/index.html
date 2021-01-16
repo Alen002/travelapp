@@ -11,40 +11,54 @@
 </head>
 <body>
 
-  <h1>Travel Weather Forecast</h1>
+  <h1 class="text-center">Travel Weather Forecast</h1>
 
-  <div class="container">
-    <div id="image">
-      <img id="travel-image">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 first-col mt-2 text-center">
+        <div id="image">
+          <img id="travel-image">
+        </div>
+      </div>
+
+      <div class="col col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 first-col mt-2 mb-2 card text-center justify-content-center">
+        <div id="output">
+          <p><h2 id="info-trip"></h2></p>
+          <p><h2 id="info-departure"></h2></p>
+
+          <form class="" onsubmit="return handleSubmit(event)">
+          <p><input id="city-name" class="orm-control shadow mb-2 text-center" type="text" name="input" value="" placeholder="Enter City"></form></p> 
+          <p><input id="city-date" class="orm-control shadow mb-2 text-center" type="date" name="date" placeholder="Enter Date"></p>
+
+            
+          <!-- Submit button to fetch data from APIs -->
+          <input type="submit" class="btn btn-outline-primary text-center my-1" name="" value="Save Trip" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+          <!-- Remove button to remove data from the server -->
+          <input type="button" class="btn btn-outline-primary text-center my-1" name="" value="Remove Trip" onclick="return Client.remove(event)" onsubmit="return Client.remove(event)">
+            
+          
+          <h3 id="info-days" class="layout mt-3"></h3>
+
+          <div id="weather-description" class="layout"></div>
+          <div id="weather-low-temp"class="layout"></div>
+          <div id="weather-max-temp"class="layout"></div>
+        </div> 
+      </div>
     </div>
 
-    <div id="output">
-      <p><h2 id="info-trip"></h2></p>
-      <p><h2 id="info-departure"></h2></p>
-
-      <form class="" onsubmit="return handleSubmit(event)">
-      <p><input id="city-name" class="orm-control shadow mb-2" type="text" name="input" value="" placeholder="Enter City"></form></p> 
-      <p><input id="city-date" type="date" name="date" placeholder="Enter Date"></p>
-
-
-      <input type="text" name="username" placeholder="Your name" class="form-control shadow mb-2"></br>
-      
-      <!-- Submit button to fetch data from APIs -->
-      <input type="submit" class="btn btn-outline-primary text-center" name="" value="Save Trip" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
-      <!-- Remove button to remove data from the server -->
-      <input type="button" class="btn btn-outline-primary text-center" name="" value="Remove Trip" onclick="return Client.remove(event)" onsubmit="return Client.remove(event)">
-      
-      
-
-
-
-      <h3 id="info-days" class="layout"></h3>
-
-      <div id="weather-description" class="layout"></div>
-      <div id="weather-low-temp"class="layout"></div>
-      <div id="weather-max-temp"class="layout"></div>
-    </div>    
   </div>
+
+
+
+
+
+
+
+
+
+
+
 
   <footer>
     &copyAlen Klaric
@@ -63,8 +77,5 @@
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-</html>
-
 </body>
 </html>
