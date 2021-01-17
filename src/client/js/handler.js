@@ -20,6 +20,11 @@ function handleSubmit(event) {
     let inputDate = document.getElementById('city-date').value
     console.log(inputDate);
 
+    //set min-heigt of image to 550px
+    const showImage = document.querySelector('#travel-image');
+    showImage.style.minHeight = '550px';
+
+
     // Input validation
     if (cityName.length == 0) {alert('Please enter a city');} 
     if (inputDate.length == 0) {alert('Please enter your departure date');} 

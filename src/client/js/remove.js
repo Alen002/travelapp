@@ -14,6 +14,10 @@ function remove(event) {
     document.getElementById('info-departure').innerHTML = ""; 
     document.getElementById('travel-image').src="";
     post(path, {});
+
+    // Remove min-height of image
+    const showImage = document.querySelector('#travel-image');
+    showImage.style.minHeight = '';
 };
 
 export { remove };
